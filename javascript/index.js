@@ -30,33 +30,43 @@ var box = document.getElementById('textBox');
 
 var button = document.getElementById('btn');
 
+var score = document.getElementById('score');
+
 label.textContent = sol;
 
 var rep=0;
 var count = 0;
+var b = false;
+score.textContent=count.toString()+'/9';
 
 button.addEventListener ("click", function() {
     c = box.value;
-    count++;
-    for (var i = 0; i < word.length; i++) {
-        if (c == word[i]) {
-            rep++;
+    if(c != ""){
+        b = false;    
+        for (var i = 0; i < word.length; i++) {
+            if (c == word[i]) {
+                rep++;
+                
+                sol = sol.replaceAt(i, word[i]);
+                b = true;
+                label.textContent = sol;
+                console.log(sol);
+                if(sol === word){
+                    window.alert("You Won!!!");
+                }    
+            }
             
-            sol = sol.replaceAt(i, word[i]);
-
-            label.textContent = sol;
-            console.log(sol);
-            if(sol === word){
-                window.alert("you won");
-            }    
+            
+            box.value = '';
         }
-        
-        box.value = '';
-    }
-    if(count === 9){
-        window.alert('you lost');
-        location.reload();
-    }
+        if(!b){
+            count++;
+            score.textContent=count.toString()+'/9';
+        }
+        if(count === 9){
+            window.alert('You lost :(');
+        }
+}
   });
   textBox.addEventListener("keyup", function () { 
   
