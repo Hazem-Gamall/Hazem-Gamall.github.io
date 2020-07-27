@@ -28,9 +28,11 @@ var button = document.getElementById('btn');
 label.textContent = sol;
 
 var rep=0;
+var count = 0;
 
 button.addEventListener ("click", function() {
     c = box.value;
+    count++;
     for (var i = 0; i < word.length; i++) {
         if (c == word[i]) {
             rep++;
@@ -46,7 +48,9 @@ button.addEventListener ("click", function() {
         
         box.value = '';
     }
-    
+    if(count === 9){
+        window.alert('you lost');
+    }
   });
   textBox.addEventListener("keyup", function () { 
   
