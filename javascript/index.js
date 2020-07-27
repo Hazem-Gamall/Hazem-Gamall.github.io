@@ -9,6 +9,11 @@ var c;
 
 word = window.prompt("enter the word");
 
+while(word === ""){
+    word = window.prompt("enter the word");
+    console.log(word);
+}
+
 for(var i = 0; i < word.length; i++){
     if(/^[0-9a-z]+$/.test(word[i])){
 
@@ -50,6 +55,7 @@ button.addEventListener ("click", function() {
     }
     if(count === 9){
         window.alert('you lost');
+        location.reload();
     }
   });
   textBox.addEventListener("keyup", function () { 
